@@ -10,7 +10,6 @@ server.listen(3000, () => {
 
 server.on("connection", (client) => {
   console.log("server: New client connected!")
-  // client.write("Hello there!")
 
   client.setEncoding("utf8")
 
@@ -23,7 +22,6 @@ server.on("connection", (client) => {
       const fullPath = `.${path.sep}server${path.sep}${fileName}`
       fs.readFile(fullPath, 'utf8', (err, data) => {
         if (err) {
-          // client.write(`error finding ${fileName} for you :(`)
           console.log('server-info: error reading file')
           return
         }
@@ -33,9 +31,5 @@ server.on("connection", (client) => {
         }))
       })
     }
-  })
-
-  client.on("close", (hadError) => {
-    console.log("server: Some client disconnected ")
   })
 })

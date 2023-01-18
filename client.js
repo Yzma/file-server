@@ -33,9 +33,7 @@ conn.on('connect', () => {
 
 conn.on('data', (data) => {
   
-
   const parsed = JSON.parse(data)
-  console.log('client-data-parsed:', parsed)
   if (parsed && parsed.fileName) {
     console.log('Server sent:', data.fileName)
     const fullPath = `.${path.sep}client${path.sep}${parsed.fileName}`
@@ -44,8 +42,7 @@ conn.on('data', (data) => {
       if (err) {
         console.error(err)
       }
-      console.log('wrote the file???')
-      // file written successfully
+      console.log('File written to client folder successfully')
     })
   }
 })
